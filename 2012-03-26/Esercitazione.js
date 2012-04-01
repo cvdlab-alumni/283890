@@ -44,3 +44,29 @@ var drawSphere = function (r,n,color) {
 	COLOR(color)(mapped);
 	DRAW(mapped);
 }
+
+
+var drawCupola = function (r,n,color) {
+	var domain = DOMAIN([[0,((PI/2)-(PI/12))],[0,2*PI]])([n,2*n]);
+	var mapping = function(p) {
+		var u = p[0];
+		var v = p[1];
+		return [r*COS(u)*COS(v),r*COS(u)*SIN(v),r*SIN(u)];
+	}
+	var mapped = MAP(mapping)(domain);
+	COLOR(color)(mapped);
+	DRAW(mapped);
+}
+
+var drawCilinderBasement = function (r,h,n,m,color) {
+	var piano = DOMAIN([[0,2*PI],[0,h]])([n,m]);
+	var mapping = function(p) {
+		var u = p[0];
+		var v = p[1];
+		return [r*SIN(u),r*COS(u),v];
+	}
+	var mapped = MAP(mapping)(piano);
+	var t = TRANSLATE([2])([-h])(mapped);
+        COLOR(color)(t);
+	DRAW(t);
+}
