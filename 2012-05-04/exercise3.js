@@ -2,7 +2,7 @@
 
 /* Definizione dei domini */
 var domain1 = INTERVALS(1)(40);
-var domain2 = DOMAIN([[0,1],[0,1]])([50,50]);
+var domain2 = DOMAIN([[0,1],[0,1]])([60,60]);
 
 /* Dati necessari per la superficie sinistra dello stabilizzatore verticale */
 var cp3 = [[0,-0.1,0],[0,-0.1,1],[0,0,0],[0,0,0]];
@@ -38,7 +38,25 @@ var apperimsup = MAP(apperim)(domain2);
 var apperim1 = BEZIER(S1)([cc3s,cc3]);
 var apperimsup1 = MAP(apperim1)(domain2);
 
-var stabVert1 = STRUCT([alettoneP,alettonePS,apperimsup,apperimsup1]);
+
+
+/* Definisco la scritta del numero 4 sull'alettone */
+var qcontrolpoints1 = [[-0.4,0,0.4],[-0.35,0,0.4],[0,0,0],[0,0,0]];
+var qc1 = CUBIC_HERMITE(S0)(qcontrolpoints1);
+var qcurve1 = MAP(qc1)(domain1);
+
+var qcontrolpoints2 = [[0,0,0.7],[0.05,0,0.7],[0,0,0],[0,0,0]];
+var qc2 = CUBIC_HERMITE(S0)(qcontrolpoints2);
+var qcurve2 = MAP(qc2)(domain1);
+
+var fasciaQ = BEZIER(S1)([qc1,qc2]);
+var fasciaQuattro = MAP(fasciaQ)(domain2);
+
+var verQ = SIMPLEX_GRID([[0.05],[0,0],[0,0.7]]);
+var orQ = T([0,1,2])([-0.35,0,0.4])(SIMPLEX_GRID([[0.6],[0],[0.05]]));
+var quattro = T([0,1,2])([-0.28,-0.11,0.2])(COLOR([0,0,0])(STRUCT([fasciaQuattro,verQ,orQ])));
+
+var stabVert1 = STRUCT([alettoneP,alettonePS,apperimsup,apperimsup1,quattro]);
 
 var cp4 = [[0,0.1,1],[0.6,0.1,0.75],[0,0,0],[0,0,0]];
 var cc4 = CUBIC_HERMITE(S0)(cp4);

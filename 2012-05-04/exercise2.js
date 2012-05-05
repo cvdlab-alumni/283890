@@ -2,7 +2,7 @@
 
 /* Definizione dei domini */
 var domain1 = INTERVALS(1)(40);
-var domain2 = DOMAIN([[0,1],[0,1]])([50,50]);
+var domain2 = DOMAIN([[0,1],[0,1]])([60,60]);
 
 /* Curva verticale posteriore della fusoliera lato destro*/
 var controlpoints1 = [[0,-0.20,1],[0,-0.2,0.7],[0,0,-1],[0,0,-1]];
@@ -216,27 +216,28 @@ var corno = STRUCT([lato2surf,lato1surf,supfrontsur, frontsurface1,
 /* Posizionamento della parte sporgente */
 var cornosp = T([0,1,2])([5.9,0,0.54])(corno);
 
-/* Includo la fusoliera, la parte sporgente e l'elica completa di anello in un unico oggetto */
-var fusolieraCompleta = STRUCT([fusoliera,cornosp,elicacompl])
-DRAW(fusolieraCompleta);
 
+/* Ruote dell'aircraft */
 
-
-var rcp1 = [[1,0,0],[0,1,0],[0,2,0],[-2,0,0]];
+var rcp1 = [[0.1,0,0],[0,0.1,0],[0,0.2,0],[-0.2,0,0]];
 var rc1 = CUBIC_HERMITE(S0)(rcp1);
 var rcurve1 = MAP(rc1)(domain1);
 
-var rcp2 = [[2,0,0],[0,2,0],[0,3,0],[-3,0,0]];
+var rcp2 = [[0.2,0,0],[0,0.2,0],[0,0.3,0],[-0.3,0,0]];
 var rc2 = CUBIC_HERMITE(S0)(rcp2);
 var rcurve2 = MAP(rc2)(domain1);
 
+var s12h = CUBIC_HERMITE(S1)([rc1,rc2,[0,0,0.3],[0,0,-0.3]]); 
+var surface12h = MAP(s12h)(domain2);
+var surface34h = R([0,1])([PI/2])(surface12h);
 
-var s12b = BEZIER(S1)([c1,c2]);
-var surface12b = MAP(s12b)(domain2); 
+var surface21h = R([0,1])([PI/2])(R([1,2])([PI])(surface12h));
+var surface43h = R([0,1])([PI/2])(surface21h);
 
-var s12h = CUBIC_HERMITE(S1)([c1,c2,[0,0,3],[0,0,-3]]); 
-var surface12h = MAP(s12h)(domain2); 
+var gomma1 = COLOR([0,0,0])(R([1,2])([-PI/2])((STRUCT([surface12h,surface21h,surface43h,surface34h]))));
+var gomma2 = T([1])([0.7])(gomma1);
+var gomme = T([0,1,2])([5.69,-0.35,0.2])(STRUCT([gomma1,gomma2]));
 
-var tube = STRUCT([surface12h, surface12b]);
-DRAW(tube);
-
+/* Includo la fusoliera, la parte sporgente e l'elica completa di anello in un unico oggetto */
+var fusolieraCompleta = STRUCT([fusoliera,cornosp,elicacompl,gomme])
+DRAW(fusolieraCompleta);

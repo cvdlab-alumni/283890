@@ -2,7 +2,7 @@
 
 /* Definizione dei domini */
 var domain1 = INTERVALS(1)(40);
-var domain2 = DOMAIN([[0,1],[0,1]])([50,50]);
+var domain2 = DOMAIN([[0,1],[0,1]])([60,60]);
 
 /* Curva verticale posteriore della fusoliera lato destro*/
 var controlpoints1 = [[0,-0.20,1],[0,-0.2,0.7],[0,0,-1],[0,0,-1]];
@@ -217,8 +217,30 @@ var corno = STRUCT([lato2surf,lato1surf,supfrontsur, frontsurface1,
 /* Posizionamento della parte sporgente */
 var cornosp = T([0,1,2])([5.9,0,0.54])(corno);
 
+
+/* Ruote dell'aircraft */
+
+var rcp1 = [[0.1,0,0],[0,0.1,0],[0,0.2,0],[-0.2,0,0]];
+var rc1 = CUBIC_HERMITE(S0)(rcp1);
+var rcurve1 = MAP(rc1)(domain1);
+
+var rcp2 = [[0.2,0,0],[0,0.2,0],[0,0.3,0],[-0.3,0,0]];
+var rc2 = CUBIC_HERMITE(S0)(rcp2);
+var rcurve2 = MAP(rc2)(domain1);
+
+var s12h = CUBIC_HERMITE(S1)([rc1,rc2,[0,0,0.3],[0,0,-0.3]]); 
+var surface12h = MAP(s12h)(domain2);
+var surface34h = R([0,1])([PI/2])(surface12h);
+
+var surface21h = R([0,1])([PI/2])(R([1,2])([PI])(surface12h));
+var surface43h = R([0,1])([PI/2])(surface21h);
+
+var gomma1 = COLOR([0,0,0])(R([1,2])([-PI/2])((STRUCT([surface12h,surface21h,surface43h,surface34h]))));
+var gomma2 = T([1])([0.7])(gomma1);
+var gomme = T([0,1,2])([5.69,-0.35,0.2])(STRUCT([gomma1,gomma2]));
+
 /* Includo la fusoliera, la parte sporgente e l'elica completa di anello in un unico oggetto */
-var fusolieraCompleta = STRUCT([fusoliera,cornosp,elicacompl]);
+var fusolieraCompleta = STRUCT([fusoliera,cornosp,elicacompl,gomme]);
 
 
 /* Definisco le ali */
@@ -295,7 +317,24 @@ var apperimsup = MAP(apperim)(domain2);
 var apperim1 = BEZIER(S1)([cc3s,cc3]);
 var apperimsup1 = MAP(apperim1)(domain2);
 
-var stabVert1 = STRUCT([alettoneP,alettonePS,apperimsup,apperimsup1]);
+/* Definisco la scritta del numero 4 sull'alettone */
+var qcontrolpoints1 = [[-0.4,0,0.4],[-0.35,0,0.4],[0,0,0],[0,0,0]];
+var qc1 = CUBIC_HERMITE(S0)(qcontrolpoints1);
+var qcurve1 = MAP(qc1)(domain1);
+
+var qcontrolpoints2 = [[0,0,0.7],[0.05,0,0.7],[0,0,0],[0,0,0]];
+var qc2 = CUBIC_HERMITE(S0)(qcontrolpoints2);
+var qcurve2 = MAP(qc2)(domain1);
+
+var fasciaQ = BEZIER(S1)([qc1,qc2]);
+var fasciaQuattro = MAP(fasciaQ)(domain2);
+
+var verQ = SIMPLEX_GRID([[0.05],[0,0],[0,0.7]]);
+var orQ = T([0,1,2])([-0.35,0,0.4])(SIMPLEX_GRID([[0.6],[0],[0.05]]));
+var quattro = T([0,1,2])([-0.28,-0.11,0.2])(COLOR([0,0,0])(STRUCT([fasciaQuattro,verQ,orQ])));
+
+var stabVert1 = STRUCT([alettoneP,alettonePS,apperimsup,apperimsup1,quattro]);
+
 
 var cp4 = [[0,0.1,1],[0.6,0.1,0.75],[0,0,0],[0,0,0]];
 var cc4 = CUBIC_HERMITE(S0)(cp4);
@@ -378,10 +417,6 @@ var stabOriz = STRUCT([aletLatDx,aletLatSx]);
 
 /* Unisco in un unico elemento gli stabilizzatori e li posiziono*/
 var stabilizzatori = T([2])([0.7])(STRUCT([stabVert2,stabVert1,stabOriz]));
-
-
-
-
 
 
 /* Aereo completo */
