@@ -20,7 +20,7 @@ var drawCircle = function (r,n) {
 }
 
 
-var drawCilinder = function (r,h,n,m,color) {
+var drawCylinder = function (r,h,n,m,color) {
 	var piano = DOMAIN([[0,2*PI],[0,h]])([n,m]);
 	var mapping = function(p) {
 		var u = p[0];
@@ -58,7 +58,7 @@ var drawCupola = function (r,n,color) {
 	DRAW(mapped);
 }
 
-var drawCilinderBasement = function (r,h,n,m,color) {
+var drawCylinderBasement = function (r,h,n,m,color) {
 	var piano = DOMAIN([[0,2*PI],[0,h]])([n,m]);
 	var mapping = function(p) {
 		var u = p[0];
