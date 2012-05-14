@@ -39,11 +39,11 @@ b.push(R([0,1])([2*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop
 b.push(R([0,1])([-2*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.30))));
 b.push(R([0,1])([4*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.32))));
 b.push(R([0,1])([-4*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.30))));
-b.push(R([0,1])([(2*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.24))));
-b.push(R([0,1])([(4*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.25))));
-b.push(R([0,1])([(6*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.23))));
-b.push(R([0,1])([(8*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.30))));
 b.push(R([0,1])([PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.26)))); 
+b.push(R([0,1])([3*PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.24))));
+b.push(R([0,1])([5*PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.25))));
+b.push(R([0,1])([7*PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.23))));
+b.push(R([0,1])([9*PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.30))));
 var branches = T([2])([0.045])(STRUCT(b));
 
 
