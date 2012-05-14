@@ -34,17 +34,16 @@ var buildBranch = function (branchbase, branchtop, h, branchbaseColor) {
 var branchbase = DISK(0.003)(50);
 var branchtop = STRUCT([EXTRUDE([0.02])(DISK(0.0035)(50)),T([2])([0.02])(light)]);
 var b = [];
-b.push(T([0,1])([0.05,0.05])(buildBranch(branchbase,branchtop,0.2)));
-b.push(T([0,1])([-0.04,-0.04])(buildBranch(branchbase,branchtop,0.22)));
-b.push(T([0,1])([0.02,-0.06])(buildBranch(branchbase,branchtop,0.22)));
-b.push(T([0,1])([0.04,-0.02])(buildBranch(branchbase,branchtop,0.25)));
-b.push(T([0,1])([-0.01,-0.02])(buildBranch(branchbase,branchtop,0.3)));
-b.push(T([0,1])([-0.03,0.03])(buildBranch(branchbase,branchtop,0.28)));
-b.push(T([0,1])([0.02,0.03])(buildBranch(branchbase,branchtop,0.27)));
-b.push(buildBranch(branchbase,branchtop,0.33));
-b.push(T([0])([-0.06])(buildBranch(branchbase,branchtop,0.21)));
-b.push(T([0])([0.07])(buildBranch(branchbase,branchtop,0.25)));
-b.push(T([1])([0.07])(buildBranch(branchbase,branchtop,0.27)));
+b.push(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.33)));
+b.push(R([0,1])([2*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.32))));
+b.push(R([0,1])([-2*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.30))));
+b.push(R([0,1])([4*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.32))));
+b.push(R([0,1])([-4*PI/5])(T([0,1])([0.02,0.02])(buildBranch(branchbase,branchtop,0.30))));
+b.push(R([0,1])([(2*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.24))));
+b.push(R([0,1])([(4*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.25))));
+b.push(R([0,1])([(6*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.23))));
+b.push(R([0,1])([(8*PI/5)+PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.30))));
+b.push(R([0,1])([PI/5])(T([0,1])([0.045,0.045])(buildBranch(branchbase,branchtop,0.26)))); 
 var branches = T([2])([0.045])(STRUCT(b));
 
 
