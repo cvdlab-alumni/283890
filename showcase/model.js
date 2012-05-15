@@ -10,18 +10,11 @@ var baseComplete = STRUCT([base,button]);
 
 /* Definizione della lampadina*/
 
-var domain1 = INTERVALS(1)(30);
-var domain2 = DOMAIN([[0,1],[0,1]])([15,30]);
-
-var b1 = [[0.002,0,0],[0.002,0,0],[0.002,0,0.005],[0,0,0.035],[-0.002,0,0.005],[-0.002,0,0],[-0.002,0,0]];
-var b2 = [[0,0.002,0],[0,0.002,0],[0,0.002,0.005],[0,0,0.035],[0,-0.002,0.005],[0,-0.002,0],[0,-0.002,0]];
-var c1 = BEZIER(S0)(b1);
-var c2 = BEZIER(S0)(b2);
-
-var s12 = BEZIER(S1)([c1,c2]);
-var light1 = MAP(s12)(domain2);
-var light2 = R([0,1])(PI/2)(light1);
-var light = COLOR([1,1,0,0.8])(STRUCT([light1,light2]));
+var domain = DOMAIN([[0,1],[0,2*PI]])([80,80]);
+var controlpoints1 = [[0.002,0,0],[0,0,0.01],[0.006,0,0.01],[-0.01,0,0.006]];
+var c1 = CUBIC_HERMITE(S0)(controlpoints1);
+var cc = ROTATIONAL_SURFACE(c1);
+var light = COLOR([1,1,0,0.8])(MAP(cc)(domain));
 
 
 
