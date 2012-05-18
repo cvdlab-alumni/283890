@@ -5,7 +5,6 @@ var base1 = EXTRUDE([0.015])(DISK(0.102)(50));
 var base2 = T([2])([0.015])(EXTRUDE([0.03])(DISK(0.1)(50)));
 var base = COLOR([0.84,0.84,0.84])(STRUCT([base1,base2]));
 var button = R([0,1])([-PI/24])(T([1,2])([0.101,0.002])(COLOR([0.95,0.95,0.95])(SIMPLEX_GRID([[0.01],[0.005],[0.007]]))));
-var baseComplete = STRUCT([base,button]);
 
 
 /* Definizione della lampadina*/
@@ -87,9 +86,4 @@ var pins = T([2])([0.25])(STRUCT(ps));
 
 
 /* Lampada completa */
-var scmodel = STRUCT([baseComplete,branches,glasses,pins]);
-
-DRAW(scmodel);
-
-
-
+var scmodel = STRUCT([base,button,branches,glasses,pins]);
