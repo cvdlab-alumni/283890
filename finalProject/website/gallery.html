@@ -37,43 +37,43 @@ Released   : 20120513
             <h2>Villa Almerico Capra</h2>
 		</div>
 	</div>
-    <div id="logo">
+    <div class="logo">
        <h2>Villa Almerico Capra</h2>
 	</div>
 	<div id="banner" align="center"><img src="images/villa4.jpg" width="681" height="450" alt=""/></div>
 	<!-- end #header -->
 <div id="page">
-	<div id="logo">
+	<div class="logo">
 		<h2> Gallery </h2>
 	</div>
 <div>
 						<div id="gallery" align="center">
-							<div id="gallery-background"><img src="<?php bloginfo('template_url'); ?>/images/Screenshot 3.jpg" alt="" width="1258" height="707" class="output" /></div>
+							<div id="gallery-background"><img src="images/Screenshot3.jpg" alt="" width="1258" height="707" class="output" /></div>
 							<div id="gallery-bgthumb">
 								<ul class="thumbnails">
-									<li><img src="images/Screenshot 3.jpg" title="Villa La Rotonda; From the outside." alt="" width="128" height="88"/></li>
+									<li><img src="images/Screenshot3.jpg" title="Villa La Rotonda; From the outside." alt="" width="128" height="88"/></li>
                                     
-									<li><img src="images/Screenshot 13.jpg" title="Villa La Rotonda; South-East view" alt="" width="100" height="75"/></li>
+									<li><img src="images/Screenshot13.jpg" title="Villa La Rotonda; South-East view" alt="" width="100" height="75"/></li>
                                     
-									<li><img src="images/Screenshot 4.jpg" title="Villa La Rotonda; From the outside." alt="" width="100" height="75" /></li>
+									<li><img src="images/Screenshot4.jpg" title="Villa La Rotonda; From the outside." alt="" width="100" height="75" /></li>
                                     
-									<li><img src="images/Screenshot 5.jpg" title="Villa La Rotonda; Front view." alt="" width="100" height="75" /></li>
+									<li><img src="images/Screenshot5.jpg" title="Villa La Rotonda; Front view." alt="" width="100" height="75" /></li>
                                     
-                                    <li><img src="images/Screenshot 6.jpg" title="Villa La Rotonda; Interior" alt="" width="100" height="75" /></li>
+                                    <li><img src="images/Screenshot6.jpg" title="Villa La Rotonda; Interior" alt="" width="100" height="75" /></li>
                                     
-                                   <li><img src="images/Screenshot 7.jpg" title="Villa La Rotonda; Interior." alt="" width="100" height="75" /></li>
+                                   <li><img src="images/Screenshot7.jpg" title="Villa La Rotonda; Interior." alt="" width="100" height="75" /></li>
                                    
-                                   <li><img src="images/Screenshot 8.jpg" title="Villa La Rotonda; One of the entrances under the portic." alt="" width="100" height="75" /></li>
+                                   <li><img src="images/Screenshot8.jpg" title="Villa La Rotonda; One of the entrances under the portic." alt="" width="100" height="75" /></li>
                                    
-                                   <li><img src="images/Screenshot 9.jpg" title="Villa La Rotonda; Circular hall." alt="" width="100" height="75" /></li>
+                                   <li><img src="images/Screenshot9.jpg" title="Villa La Rotonda; Circular hall." alt="" width="100" height="75" /></li>
                                    
-                                   <li><img src="images/Screenshot 14.jpg" title="Villa La Rotonda; Circular hall, view from up above." alt="" width="100" height="75" /></li>
+                                   <li><img src="images/Screenshot14.jpg" title="Villa La Rotonda; Circular hall, view from up above." alt="" width="100" height="75" /></li>
                                    
-                                   <li><img src="images/Screenshot 15.jpg" title="Villa La Rotonda; Circular hall, view from the bottom." alt="" width="100" height="75" /></li>
+                                   <li><img src="images/Screenshot15.jpg" title="Villa La Rotonda; Circular hall, view from the bottom." alt="" width="100" height="75" /></li>
                                    
-                                   <li><img src="images/Screenshot 11.jpg" title="Villa La Rotonda; View of the roof-" alt="" width="100" height="75" /></li>
+                                   <li><img src="images/Screenshot11.jpg" title="Villa La Rotonda; View of the roof-" alt="" width="100" height="75" /></li>
                                    
-                                   <li><img src="images/Screenshot 12.jpg" title="Villa La Rotonda; The cupola." alt="" width="100" height="75" /></li>
+                                   <li><img src="images/Screenshot12.jpg" title="Villa La Rotonda; The cupola." alt="" width="100" height="75" /></li>
                                  
 								</ul>
 								<br class="clear" />
@@ -84,6 +84,8 @@ Released   : 20120513
 						$('#gallery').gallerax({
 							outputSelector: 		'.output',					// Output selector
 							thumbnailsSelector:		'.thumbnails li img',		// Thumbnails selector
+							captionSelector:		'.caption',
+							
 							fade: 					'fast',						// Transition speed (fast)
 							navNextSelector:		'.nav li a.navNext',		// 'Next' selector
 							navPreviousSelector:	'.nav li a.navPrevious'		// 'Previous' selector
@@ -95,6 +97,7 @@ Released   : 20120513
 
 <div id="footer">
 </div>
-<!-- end #footer -->
+</div>
+</div>
 </body>
 </html>

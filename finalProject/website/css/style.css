@@ -112,6 +112,15 @@ img.aligncenter {
 	font-size: 40px;
 }
 
+.logo h2{
+	padding-left: 30px;
+	letter-spacing: -3px;
+	text-transform:none;
+	font-family: 'Lucida Calligraphy';
+	font-size: 40px;
+	text-align:center
+}
+
 #logo span {
 	letter-spacing: normal;
 	font-size: 22px;
@@ -218,7 +227,7 @@ img.aligncenter {
 
 /* Content */
 
-#content {
+.content {
 	float:left
 	width: 540px;
 }
@@ -553,3 +562,4 @@ img.aligncenter {
 {
 	border: solid 6px #CCFFFF;
 }
+
